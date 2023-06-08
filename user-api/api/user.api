@@ -1,0 +1,75 @@
+// api语法版本
+syntax = "v1"
+
+info(
+	author: "lhaosss"
+	date:   "2023-05-08"
+	desc:   "开始学习go-zero"
+)
+
+type (
+	UserInfoReq {
+		UserId int64 `json:"userId"`
+	}
+	UserInfoResp {
+		UserId   int64  `json:"userId"`
+		Nickname string `json:"nickname"`
+	}
+)
+
+type (
+	UserUpdateReq {
+		UserId   int64  `json:"userId"`
+		Nickname string `json:"nickname"`
+	}
+	UserUpdateResp {
+		Flag bool `json:"flag"`
+	}
+)
+
+type (
+	UserCreateReq {
+		Mobile   string `json:"mobile"`
+		Nickname string `json:"nickname"`
+	}
+	UserCreateResp {
+		Flag bool `json:"flag"`
+	}
+)
+
+type (
+	userTestReq {
+	}
+	userTestResp {
+	}
+)
+
+@server(
+	group: user
+	prefix: userapi/v1
+	middleware: TestMiddleware
+)
+
+service user-api{
+	@doc "获取用户信息"
+	@handler userInfo
+	get /user/info (UserInfoReq) returns (UserInfoResp)
+	
+	@doc "修改用户信息"
+	@handler userUpdate
+	post /user/update (UserUpdateReq) returns (UserUpdateResp)
+	
+	@doc "新增用户"
+	@handler UserCreate
+	post /user/create (UserCreateReq) returns (UserCreateResp)
+}
+
+@server(
+	group: user
+	prefix: userapi/v1
+)
+
+service user-api {
+	@handler userTest
+	post /user/test (userTestReq) returns (userTestResp)
+}
