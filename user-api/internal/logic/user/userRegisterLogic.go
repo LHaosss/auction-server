@@ -24,7 +24,6 @@ func NewUserRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *User
 }
 
 func (l *UserRegisterLogic) UserRegister(req *types.UserRegisterReq) (resp *types.UserRegisterResp, err error) {
-	// todo: add your logic here and delete this line
 
 	return
 }
