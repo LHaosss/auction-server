@@ -6,6 +6,7 @@ import (
 	"auction_server/user-api/internal/logic/user"
 	"auction_server/user-api/internal/svc"
 	"auction_server/user-api/internal/types"
+
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 

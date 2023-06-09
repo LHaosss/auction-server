@@ -2,5 +2,17 @@ Name: user-api
 Host: 0.0.0.0
 Port: 8888
 
+Log:
+  ServiceName: user-api
+  Mode: file
+  Path: logs
+  Level: error
+  Encoding: plain
+
 DB:
-  DataSource: root:293977sbbA_@tcp(127.0.0.1:3306)/zero_demo?charset=utf8mb4&parseTime=true
+  DataSource: root:293977sbbA_@tcp(127.0.0.1:3306)/auction_server?charset=utf8mb4&parseTime=true
+
+CacheRedis:
+  - Host: 0.0.0.0:6379
+    Pass: 293977sbbA_
+    Type: node

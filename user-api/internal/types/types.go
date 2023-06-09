@@ -7,7 +7,8 @@ type UserRegisterReq struct {
 }
 
 type UserRegisterResp struct {
-	Flag bool `json:"flag"`
+	Flag        bool   `json:"flag"`
+	Description string `json:"description"`
 }
 
 type UserLoginReq struct {
@@ -16,5 +17,6 @@ type UserLoginReq struct {
 }
 
 type UserLoginResp struct {
-	Flag bool `json:"flag"`
+	Flag        bool   `json:"flag"`
+	Description string `json:"description"`
 }

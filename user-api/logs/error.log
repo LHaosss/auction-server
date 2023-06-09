@@ -1,0 +1,73 @@
+2023-06-08T17:50:59.450+08:00	[31;1m error [0m	(/userapi/v1/user/register - 127.0.0.1:59504) runtime error: invalid memory address or nil pointer dereference
+goroutine 54 [running]:
+runtime/debug.Stack()
+	/opt/homebrew/Cellar/go@1.19/1.19.9/libexec/src/runtime/debug/stack.go:24 +0x64
+github.com/zeromicro/go-zero/rest/handler.RecoverHandler.func1.1()
+	/Users/mac/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.3/rest/handler/recoverhandler.go:16 +0x50
+panic({0x1034bd0a0, 0x103b5c990})
+	/opt/homebrew/Cellar/go@1.19/1.19.9/libexec/src/runtime/panic.go:884 +0x204
+auction_server/user-api/internal/logic/user.(*UserRegisterLogic).UserRegister(0x14000136e00?, 0x1400007de00)
+	/Users/mac/Desktop/github.com/LHaosss/auction-server/user-api/internal/logic/user/userRegisterLogic.go:31 +0xd4
+auction_server/user-api/internal/handler/user.UserRegisterHandler.func1({0x1035d0428, 0x1400007f620}, 0x14000136e00)
+	/Users/mac/Desktop/github.com/LHaosss/auction-server/user-api/internal/handler/user/userRegisterHandler.go:21 +0x13c
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x1035d0428?, 0x1400007f620?}, 0x102ba5774?)
+	/opt/homebrew/Cellar/go@1.19/1.19.9/libexec/src/net/http/server.go:2109 +0x38
+github.com/zeromicro/go-zero/rest/handler.GunzipHandler.func1({0x1035d0428, 0x1400007f620}, 0x14000136e00)
+	/Users/mac/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.3/rest/handler/gunziphandler.go:26 +0xe4
+net/http.HandlerFunc.ServeHTTP(0x103b7d0a0?, {0x1035d0428?, 0x1400007f620?}, 0x103b7d0a0?)
+	/opt/homebrew/Cellar/go@1.19/1.19.9/libexec/src/net/http/server.go:2109 +0x38
+github.com/zeromicro/go-zero/rest/handler.MaxBytesHandler.func2.1({0x1035d0428?, 0x1400007f620?}, 0xeda08379f?)
+	/Users/mac/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.3/rest/handler/maxbyteshandler.go:24 +0xf0
+net/http.HandlerFunc.ServeHTTP(0x14000389ea8?, {0x1035d0428?, 0x1400007f620?}, 0x10351c540?)
+	/opt/homebrew/Cellar/go@1.19/1.19.9/libexec/src/net/http/server.go:2109 +0x38
+github.com/zeromicro/go-zero/rest/handler.MetricHandler.func1.1({0x1035d0428, 0x1400007f620}, 0x14000178a80?)
+	/Users/mac/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.3/rest/handler/metrichandler.go:21 +0xcc
+net/http.HandlerFunc.ServeHTTP(0x14000389f98?, {0x1035d0428?, 0x1400007f620?}, 0x0?)
+	/opt/homebrew/Cellar/go@1.19/1.19.9/libexec/src/net/http/server.go:2109 +0x38
+github.com/zeromicro/go-zero/rest/handler.RecoverHandler.func1({0x1035d0428?, 0x1400007f620?}, 0x1035ce1b8?)
+	/Users/mac/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.3/rest/handler/recoverhandler.go:21 +0x78
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x1035d0428?, 0x1400007f620?}, 0x140001a2500?)
+	/opt/homebrew/Cellar/go@1.19/1.19.9/libexec/src/net/http/server.go:2109 +0x38
+github.com/zeromicro/go-zero/rest/handler.(*timeoutHandler).ServeHTTP.func1()
+	/Users/mac/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.3/rest/handler/timeouthandler.go:81 +0x74
+created by github.com/zeromicro/go-zero/rest/handler.(*timeoutHandler).ServeHTTP
+	/Users/mac/go/pkg/mod/github.com/zeromicro/go-zero@v1.5.3/rest/handler/timeouthandler.go:75 +0x2c8
+	caller=internal/log.go:57	trace=70136bf747f2e4d8fc8c039e9e1a9926	span=be450c126cd13562
+2023-06-08T17:50:59.450+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:59504 - PostmanRuntime/7.32.2
+POST /userapi/v1/user/register HTTP/1.1
+Host: 0.0.0.0:8888
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 59
+Content-Type: application/json
+Postman-Token: ed97d4ad-442c-46c7-ac63-9bbb9d442e60
+User-Agent: PostmanRuntime/7.32.2
+
+{
+    "user_name": "LHaosss",
+    "password": "lllhhhsss"
+}	duration=1.3ms	caller=handler/loghandler.go:162	trace=70136bf747f2e4d8fc8c039e9e1a9926	span=be450c126cd13562
+2023-06-08T18:00:50.626+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=431945b5bcbe71fbeb6b8a451d6811b0	span=0770b8c8a17e7a5c
+2023-06-08T18:04:04.494+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=348f25961fa85b9bd89a0d556847c342	span=50c88075a9593a2b
+2023-06-08T18:15:21.512+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=31e9d63f22d73ee6d0163cc3f519e57a	span=3a86810d7a64b947
+2023-06-08T18:16:40.496+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=bbaeaf86386c986a85b9263e4c698fc9	span=0cab764621bc8767
+2023-06-08T18:17:17.218+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss true} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=40ee2754d7f35a0a92c9a7d0a69a06bf	span=5e8e59b0848b138f
+2023-06-08T18:19:39.651+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss true} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=12a0bd0b3098e2c10ffbbf0c1453a74c	span=082b5d55db8148ff
+2023-06-08T18:21:42.185+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss true} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=c856fd091e18a0ba5a22ec7fac85f32b	span=c893b6191baf9620
+2023-06-08T18:24:01.865+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=5e2670de06ac3340e1bd3363826475ac	span=52b875c224dbd2f7
+2023-06-08T18:26:09.268+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=93505d687d9bafa2a177e2fc406c26ab	span=6ca47ca6883ae033
+2023-06-08T18:40:28.430+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=3ee9653990e2ea83520fbaf55c3b479c	span=06ee9dee2a3cce45
+2023-06-08T18:41:58.572+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=49d8ee920cfe4a2bf5cc8e008433e433	span=9dcc2a5f281a5f04
+2023-06-08T18:42:37.532+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=8ace131ba7f7ab4bb0b2f58d99d5b187	span=70a452f5876f9d15
+2023-06-08T18:42:48.392+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=95d3abae513e6bb4292c764df0cafbf4	span=4ba52d2285510979
+2023-06-08T18:46:03.859+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss false}, {lllhhh false}), error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=a040651491a2c55778347bf8fe46422e	span=34b2ca03862cc5f0
+2023-06-08T18:46:29.786+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss false}, {lllhhh false}), error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=050a5e1fb2e03e7ecf3d30f87b1e9b13	span=7a8d464d8e60bd79
+2023-06-08T21:41:38.427+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=3f0706e9b5f1c6879de2fc46ed01595e	span=987f973dcde7ab15
+2023-06-08T21:42:20.336+08:00	[31;1m error [0m	stmt: select `id`,`username`,`password` from `user` where `username` = {LHaosss false} limit 1, error: Error 1054 (42S22): Unknown column 'username' in 'field list'	caller=sqlx/utils.go:140	trace=9769cce57c5b54319fd6890e2a08d705	span=a58792b69fdedf10
+2023-06-08T22:10:29.080+08:00	[31;1m error [0m	stmt: insert into `user` (`id`,`username`,`password`) values (0, {LHaosss false}, {lllhhh false}), error: Error 1062 (23000): Duplicate entry '0' for key 'user.PRIMARY'	caller=sqlx/utils.go:140	trace=a432559d6c305cc61192a930b8c99e16	span=c46c72d6788a6e78
+2023-06-08T22:11:32.221+08:00	[31;1m error [0m	stmt: insert into `user` (`id`,`username`,`password`) values (0, {LHaosss false}, {lllhhh false}), error: Error 1062 (23000): Duplicate entry '0' for key 'user.PRIMARY'	caller=sqlx/utils.go:140	trace=4a69de1dd92965334d36999fc93a4792	span=2fa42cc91600e1ef
+2023-06-08T22:17:53.611+08:00	[31;1m error [0m	stmt: insert into `user` (`id`,`username`,`password`) values (0, {LHaosss false}, {lllhhh false}), error: Error 1062 (23000): Duplicate entry '0' for key 'user.PRIMARY'	caller=sqlx/utils.go:140	trace=e4db7aa58979dc05af4b03b6e3db08b1	span=18cdbb740544f64f
+2023-06-08T22:23:22.556+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss true}, {lllhhh true}), error: Error 1062 (23000): Duplicate entry 'LHaosss' for key 'user.username_UNIQUE'	caller=sqlx/utils.go:140	trace=1a62345f62990948762b8f66a2ff77b5	span=61b3e8aaee20502c
+2023-06-08T22:24:43.046+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss true}, {lllhhh true}), error: Error 1062 (23000): Duplicate entry 'LHaosss' for key 'user.username_UNIQUE'	caller=sqlx/utils.go:140	trace=37c37cafd00230dbd98a7f1f6e4eef26	span=f2541991045d3d79
+2023-06-08T22:25:08.518+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss true}, {lllhhh true}), error: Error 1062 (23000): Duplicate entry 'LHaosss' for key 'user.username_UNIQUE'	caller=sqlx/utils.go:140	trace=c03a10f8997af713cd15628259634188	span=9d80dad443c8f673
