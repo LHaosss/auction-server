@@ -34,10 +34,7 @@ func (l *UserRegisterLogic) UserRegister(req *types.UserRegisterReq) (resp *type
 		Password: req.Password,
 	})
 	if err != nil {
-		return &types.UserRegisterResp{
-			Flag:        false,
-			Description: "something wrong",
-		}, nil
+		return nil, err
 	}
 
 	return &types.UserRegisterResp{

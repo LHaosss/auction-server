@@ -30,10 +30,7 @@ func (l *UserLoginLogic) UserLogin(req *types.UserLoginReq) (resp *types.UserLog
 		Password: req.Password,
 	})
 	if err != nil {
-		return &types.UserLoginResp{
-			Flag:        false,
-			Description: "something wrong",
-		}, nil
+		return nil, err
 	}
 
 	return &types.UserLoginResp{

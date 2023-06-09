@@ -1,0 +1,58 @@
+// api语法版本
+syntax = "v1"
+
+info(
+	author: "lhaosss"
+	date:   "2023-06-09"
+	desc:   "auction-server/auction-api"
+)
+
+type (
+	AuctionPostReq {
+		AuctionName  string `json:"auction_name"`
+		PostUsername string `json:"post_username"`
+		BasePrice    int    `json:"base_price"`
+		Type         string `json:"type"`
+	}
+	AuctionPostResp {
+		Id           int    `json:"id"`
+		Xid          string `json:"xid"`
+		AuctionName  string `json:"auction_name"`
+		PostUsername string `json:"post_username"`
+		BasePrice    int    `json:"base_price"`
+		Type         string `json:"type"`
+	}
+)
+
+type (
+	AuctionOfferReq {
+		AuctionXid    string `json:"auction_xid"`
+		OfferUsername string `json:"offer_username"`
+		OfferPrice    int    `json:"offer_price"`
+	}
+	AuctionOfferResp {
+		Id            int    `json:"id"`
+		Xid           string `json:"xid"`
+		AuctionName   string `json:"auction_name"`
+		PostUsername  string `json:"post_username"`
+		OfferUsername string `json:"offer_username"`
+		BasePrice     int    `json:"base_price"`
+		CurrentPrice  int    `json:"current_price"`
+		Type          string `json:"type"`
+	}
+)
+
+@server(
+	group: auction
+	prefix: auction/v1
+)
+
+service auction-api{
+	@doc "发布拍卖"
+	@handler auctionPost
+	post /auction/post (AuctionPostReq) returns (AuctionPostResp)
+	
+	@doc "竞拍"
+	@handler auctionOffer
+	post /auction/offer (AuctionOfferReq) returns (AuctionOfferResp)
+}

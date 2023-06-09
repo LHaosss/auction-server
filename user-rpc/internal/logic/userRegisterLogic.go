@@ -31,25 +31,16 @@ func (l *UserRegisterLogic) UserRegister(in *pb.UserRegisterReq) (*pb.UserRegist
 	// 验证请求
 	err := validUserRegisterReq(in)
 	if err != nil {
-		return &pb.UserRegisterResp{
-			Flag:        false,
-			Description: err.Error(),
-		}, nil
+		return nil, err
 	}
 
 	// // 查询数据库是否用户已存在
 	_, err = l.svcCtx.UserModel.FindOneByUsername(l.ctx, sql.NullString{String: in.Username, Valid: true})
 	if err == nil {
-		return &pb.UserRegisterResp{
-			Flag:        false,
-			Description: "该用户已存在",
-		}, nil
+		return nil, errors.New("该用户已存在")
 	}
 	if err != nil && err != sqlx.ErrNotFound {
-		return &pb.UserRegisterResp{
-			Flag:        false,
-			Description: "注册出错，请重试1",
-		}, nil
+		return nil, errors.New("注册出错，请重试1")
 	}
 
 	// 用户不存在，向数据库中添加用户信息
@@ -65,10 +56,7 @@ func (l *UserRegisterLogic) UserRegister(in *pb.UserRegisterReq) (*pb.UserRegist
 	}
 	_, err = l.svcCtx.UserModel.Insert(l.ctx, data)
 	if err != nil {
-		return &pb.UserRegisterResp{
-			Flag:        false,
-			Description: "注册出错，请重试2",
-		}, nil
+		return nil, errors.New("注册出错，请重试2")
 	}
 
 	return &pb.UserRegisterResp{

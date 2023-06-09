@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+enum AuctionType {
+    ArtWork = 0;
+    ArtsCrafts = 1;
+    Jewelry = 2;
+    Home = 3;
+    Car = 4;
+    SmokeDrink = 5;
+    Clothes = 6;
+}
+
+message AuctionPostReq {
+    string auctionName = 1;
+    string postUsername = 2;
+    int32 basePrice = 3;
+    AuctionType type = 4;
+    
+
+}
+
+message AuctionPostResp {
+    int32 id = 1;
+    string xid = 2;
+    string auctionName = 3;
+    string postUsername = 4;
+    int32 basePrice = 5;
+    AuctionType type = 6;
+}
+
+message AuctionOfferReq {
+    string auctionXid = 1;
+    string offerUsername = 2;
+    int32 offerPrice = 3;
+}
+
+message AuctionOfferResp {
+    int32 id = 1;
+    string xid = 2;
+    string auctionName = 3;
+    string postusername = 4;
+    string offerUsername = 5;
+    int32 basePrice = 6;
+    int32 currentPrice = 7;
+    AuctionType type = 8;
+
+}
+
+// service
+service auctioncenter {
+    rpc AuctionPost (AuctionPostReq) returns (AuctionPostResp);
+    rpc AuctionOffer (AuctionOfferReq) returns (AuctionOfferResp);
+}

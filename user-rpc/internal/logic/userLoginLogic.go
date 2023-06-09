@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 	"database/sql"
+	"errors"
 
 	"auction_server/user-rpc/internal/svc"
 	"auction_server/user-rpc/pb"
@@ -27,17 +28,11 @@ func NewUserLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserLog
 func (l *UserLoginLogic) UserLogin(in *pb.UserLoginReq) (*pb.UserLoginResp, error) {
 	user, err := l.svcCtx.UserModel.FindOneByUsername(l.ctx, sql.NullString{String: in.Username, Valid: true})
 	if err != nil {
-		return &pb.UserLoginResp{
-			Flag:        false,
-			Description: "未找到该用户",
-		}, nil
+		return nil, errors.New("未找到该用户")
 	}
 
 	if in.Password != user.Password.String {
-		return &pb.UserLoginResp{
-			Flag:        false,
-			Description: "密码错误",
-		}, nil
+		return nil, errors.New("密码错误")
 	}
 
 	return &pb.UserLoginResp{
