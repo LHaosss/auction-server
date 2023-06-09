@@ -2,10 +2,10 @@ package user
 
 import (
 	"context"
-	"database/sql"
 
 	"auction_server/user-api/internal/svc"
 	"auction_server/user-api/internal/types"
+	"auction_server/user-rpc/usercenter"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -25,23 +25,19 @@ func NewUserLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserLog
 }
 
 func (l *UserLoginLogic) UserLogin(req *types.UserLoginReq) (resp *types.UserLoginResp, err error) {
-	user, err := l.svcCtx.UserModel.FindOneByUsername(l.ctx, sql.NullString{String: req.UserName, Valid: true})
+	rpcResp, err := l.svcCtx.UserRpcClient.UserLogin(l.ctx, &usercenter.UserLoginReq{
+		Username: req.UserName,
+		Password: req.Password,
+	})
 	if err != nil {
 		return &types.UserLoginResp{
 			Flag:        false,
-			Description: "未找到该用户",
-		}, nil
-	}
-
-	if req.Password != user.Password.String {
-		return &types.UserLoginResp{
-			Flag:        false,
-			Description: "密码错误",
+			Description: "something wrong",
 		}, nil
 	}
 
 	return &types.UserLoginResp{
-		Flag:        true,
-		Description: "登陆成功",
+		Flag:        rpcResp.GetFlag(),
+		Description: rpcResp.GetDescription(),
 	}, nil
 }

@@ -1,6 +1,6 @@
 Name: user-api
 Host: 0.0.0.0
-Port: 8888
+Port: 8889
 
 Log:
   ServiceName: user-api
@@ -9,10 +9,8 @@ Log:
   Level: error
   Encoding: plain
 
-DB:
-  DataSource: root:293977sbbA_@tcp(127.0.0.1:3306)/auction_server?charset=utf8mb4&parseTime=true
-
-CacheRedis:
-  - Host: 0.0.0.0:6379
-    Pass: 293977sbbA_
-    Type: node
+UserRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
