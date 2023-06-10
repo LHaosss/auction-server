@@ -9,6 +9,7 @@ import (
 	"auction_server/user-rpc/model/user_model"
 	"auction_server/user-rpc/pb"
 
+	"github.com/rs/xid"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )
@@ -44,6 +45,7 @@ func (l *UserRegisterLogic) UserRegister(in *pb.UserRegisterReq) (*pb.UserRegist
 	}
 
 	// 用户不存在，向数据库中添加用户信息
+	userXid := xid.New().String()
 	data := &user_model.User{
 		Username: sql.NullString{
 			String: in.Username,
@@ -53,6 +55,7 @@ func (l *UserRegisterLogic) UserRegister(in *pb.UserRegisterReq) (*pb.UserRegist
 			String: in.Password,
 			Valid:  true,
 		},
+		Xid: userXid,
 	}
 	_, err = l.svcCtx.UserModel.Insert(l.ctx, data)
 	if err != nil {

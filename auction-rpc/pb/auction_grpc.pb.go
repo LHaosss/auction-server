@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Auctioncenter_AuctionPost_FullMethodName  = "/pb.auctioncenter/AuctionPost"
-	Auctioncenter_AuctionOffer_FullMethodName = "/pb.auctioncenter/AuctionOffer"
+	Auctioncenter_AuctionPost_FullMethodName    = "/pb.auctioncenter/AuctionPost"
+	Auctioncenter_AuctionOffer_FullMethodName   = "/pb.auctioncenter/AuctionOffer"
+	Auctioncenter_GetAuctionInfo_FullMethodName = "/pb.auctioncenter/GetAuctionInfo"
 )
 
 // AuctioncenterClient is the client API for Auctioncenter service.
@@ -29,6 +30,7 @@ const (
 type AuctioncenterClient interface {
 	AuctionPost(ctx context.Context, in *AuctionPostReq, opts ...grpc.CallOption) (*AuctionPostResp, error)
 	AuctionOffer(ctx context.Context, in *AuctionOfferReq, opts ...grpc.CallOption) (*AuctionOfferResp, error)
+	GetAuctionInfo(ctx context.Context, in *GetAuctionInfoReq, opts ...grpc.CallOption) (*GetAuctionInfoResp, error)
 }
 
 type auctioncenterClient struct {
@@ -57,12 +59,22 @@ func (c *auctioncenterClient) AuctionOffer(ctx context.Context, in *AuctionOffer
 	return out, nil
 }
 
+func (c *auctioncenterClient) GetAuctionInfo(ctx context.Context, in *GetAuctionInfoReq, opts ...grpc.CallOption) (*GetAuctionInfoResp, error) {
+	out := new(GetAuctionInfoResp)
+	err := c.cc.Invoke(ctx, Auctioncenter_GetAuctionInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuctioncenterServer is the server API for Auctioncenter service.
 // All implementations must embed UnimplementedAuctioncenterServer
 // for forward compatibility
 type AuctioncenterServer interface {
 	AuctionPost(context.Context, *AuctionPostReq) (*AuctionPostResp, error)
 	AuctionOffer(context.Context, *AuctionOfferReq) (*AuctionOfferResp, error)
+	GetAuctionInfo(context.Context, *GetAuctionInfoReq) (*GetAuctionInfoResp, error)
 	mustEmbedUnimplementedAuctioncenterServer()
 }
 
@@ -75,6 +87,9 @@ func (UnimplementedAuctioncenterServer) AuctionPost(context.Context, *AuctionPos
 }
 func (UnimplementedAuctioncenterServer) AuctionOffer(context.Context, *AuctionOfferReq) (*AuctionOfferResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuctionOffer not implemented")
+}
+func (UnimplementedAuctioncenterServer) GetAuctionInfo(context.Context, *GetAuctionInfoReq) (*GetAuctionInfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAuctionInfo not implemented")
 }
 func (UnimplementedAuctioncenterServer) mustEmbedUnimplementedAuctioncenterServer() {}
 
@@ -125,6 +140,24 @@ func _Auctioncenter_AuctionOffer_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auctioncenter_GetAuctionInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAuctionInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuctioncenterServer).GetAuctionInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auctioncenter_GetAuctionInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuctioncenterServer).GetAuctionInfo(ctx, req.(*GetAuctionInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auctioncenter_ServiceDesc is the grpc.ServiceDesc for Auctioncenter service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -139,6 +172,10 @@ var Auctioncenter_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AuctionOffer",
 			Handler:    _Auctioncenter_AuctionOffer_Handler,
+		},
+		{
+			MethodName: "GetAuctionInfo",
+			Handler:    _Auctioncenter_GetAuctionInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -20,12 +20,24 @@ message UserLoginReq {
 }
 
 message UserLoginResp {
-    bool flag = 1;
-    string description = 2;
+    int32 id = 1;
+    string xid = 2;
+    string username = 3;
+}
+
+message UserGetInfoReq{
+    string xid = 1;
+}
+
+message UserGetInfoResp {
+    int32 id = 1;
+    string xid = 2;
+    string username = 3;
 }
 
 // service
 service usercenter {
     rpc UserRegister(UserRegisterReq) returns(UserRegisterResp);
     rpc UserLogin(UserLoginReq) returns(UserLoginResp);
+    rpc UserGetInfo(UserGetInfoReq) returns(UserGetInfoResp);
 }

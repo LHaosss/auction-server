@@ -31,3 +31,8 @@ func (s *AuctioncenterServer) AuctionOffer(ctx context.Context, in *pb.AuctionOf
 	l := logic.NewAuctionOfferLogic(ctx, s.svcCtx)
 	return l.AuctionOffer(in)
 }
+
+func (s *AuctioncenterServer) GetAuctionInfo(ctx context.Context, in *pb.GetAuctionInfoReq) (*pb.GetAuctionInfoResp, error) {
+	l := logic.NewGetAuctionInfoLogic(ctx, s.svcCtx)
+	return l.GetAuctionInfo(in)
+}

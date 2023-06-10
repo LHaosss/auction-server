@@ -36,7 +36,8 @@ func (l *UserLoginLogic) UserLogin(in *pb.UserLoginReq) (*pb.UserLoginResp, erro
 	}
 
 	return &pb.UserLoginResp{
-		Flag:        true,
-		Description: "登陆成功",
+		Id:       int32(user.Id),
+		Xid:      user.Xid,
+		Username: user.Username.String,
 	}, nil
 }

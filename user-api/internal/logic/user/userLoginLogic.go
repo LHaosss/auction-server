@@ -34,7 +34,8 @@ func (l *UserLoginLogic) UserLogin(req *types.UserLoginReq) (resp *types.UserLog
 	}
 
 	return &types.UserLoginResp{
-		Flag:        rpcResp.GetFlag(),
-		Description: rpcResp.GetDescription(),
+		Id:       int(rpcResp.GetId()),
+		Xid:      rpcResp.GetXid(),
+		UserName: rpcResp.GetUsername(),
 	}, nil
 }

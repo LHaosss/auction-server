@@ -17,6 +17,7 @@ type UserLoginReq struct {
 }
 
 type UserLoginResp struct {
-	Flag        bool   `json:"flag"`
-	Description string `json:"description"`
+	Id       int    `json:"id"`
+	Xid      string `json:"xid"`
+	UserName string `json:"user_name"`
 }

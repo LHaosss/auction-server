@@ -12,29 +12,41 @@ enum AuctionType {
     Car = 4;
     SmokeDrink = 5;
     Clothes = 6;
+    Others = 7;
+}
+
+message AuctionInfo {
+    string auctionXid = 1;
+    string auctionName = 2;
+    string auctionImgUrl = 3;
+    int32 basePrice = 4;
+    int32 currentPrice = 5;
+    string postUserXid = 6;
+    string offerUserXid = 7;
+    AuctionType type = 8;
 }
 
 message AuctionPostReq {
     string auctionName = 1;
-    string postUsername = 2;
+    string postUserXid = 2;
     int32 basePrice = 3;
     AuctionType type = 4;
-    
-
+    string auctionImgUrl = 5;
 }
 
 message AuctionPostResp {
     int32 id = 1;
     string xid = 2;
     string auctionName = 3;
-    string postUsername = 4;
+    string postUserXid = 4;
     int32 basePrice = 5;
     AuctionType type = 6;
+    string auctionImgUrl = 7;
 }
 
 message AuctionOfferReq {
     string auctionXid = 1;
-    string offerUsername = 2;
+    string offerUserXid = 2;
     int32 offerPrice = 3;
 }
 
@@ -42,16 +54,27 @@ message AuctionOfferResp {
     int32 id = 1;
     string xid = 2;
     string auctionName = 3;
-    string postusername = 4;
-    string offerUsername = 5;
+    string postUserXid = 4;
+    string offerUserXid = 5;
     int32 basePrice = 6;
     int32 currentPrice = 7;
     AuctionType type = 8;
+    string auctionImgUrl = 9;
 
+
+}
+
+message GetAuctionInfoReq {
+    string xid = 1;
+}
+
+message GetAuctionInfoResp {
+    AuctionInfo auctionInfo = 1;
 }
 
 // service
 service auctioncenter {
     rpc AuctionPost (AuctionPostReq) returns (AuctionPostResp);
     rpc AuctionOffer (AuctionOfferReq) returns (AuctionOfferResp);
+    rpc GetAuctionInfo (GetAuctionInfoReq) returns (GetAuctionInfoResp);
 }

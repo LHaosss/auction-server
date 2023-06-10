@@ -23,6 +23,7 @@ var (
 
 	cacheAuctionServerUserIdPrefix       = "cache:auctionServer:user:id:"
 	cacheAuctionServerUserUsernamePrefix = "cache:auctionServer:user:username:"
+	cacheAuctionServerUserXidPrefix      = "cache:auctionServer:user:xid:"
 )
 
 type (
@@ -30,6 +31,7 @@ type (
 		Insert(ctx context.Context, data *User) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*User, error)
 		FindOneByUsername(ctx context.Context, username sql.NullString) (*User, error)
+		FindOneByXid(ctx context.Context, xid string) (*User, error)
 		Update(ctx context.Context, data *User) error
 		Delete(ctx context.Context, id int64) error
 	}
@@ -43,6 +45,7 @@ type (
 		Id       int64          `db:"id"`
 		Username sql.NullString `db:"username"`
 		Password sql.NullString `db:"password"`
+		Xid      string         `db:"xid"`
 	}
 )
 
@@ -61,10 +64,11 @@ func (m *defaultUserModel) Delete(ctx context.Context, id int64) error {
 
 	auctionServerUserIdKey := fmt.Sprintf("%s%v", cacheAuctionServerUserIdPrefix, id)
 	auctionServerUserUsernameKey := fmt.Sprintf("%s%v", cacheAuctionServerUserUsernamePrefix, data.Username)
+	auctionServerUserXidKey := fmt.Sprintf("%s%v", cacheAuctionServerUserXidPrefix, data.Xid)
 	_, err = m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("delete from %s where `id` = ?", m.table)
 		return conn.ExecCtx(ctx, query, id)
-	}, auctionServerUserIdKey, auctionServerUserUsernameKey)
+	}, auctionServerUserIdKey, auctionServerUserUsernameKey, auctionServerUserXidKey)
 	return err
 }
 
@@ -105,13 +109,34 @@ func (m *defaultUserModel) FindOneByUsername(ctx context.Context, username sql.N
 	}
 }
 
+func (m *defaultUserModel) FindOneByXid(ctx context.Context, xid string) (*User, error) {
+	auctionServerUserXidKey := fmt.Sprintf("%s%v", cacheAuctionServerUserXidPrefix, xid)
+	var resp User
+	err := m.QueryRowIndexCtx(ctx, &resp, auctionServerUserXidKey, m.formatPrimary, func(ctx context.Context, conn sqlx.SqlConn, v any) (i any, e error) {
+		query := fmt.Sprintf("select %s from %s where `xid` = ? limit 1", userRows, m.table)
+		if err := conn.QueryRowCtx(ctx, &resp, query, xid); err != nil {
+			return nil, err
+		}
+		return resp.Id, nil
+	}, m.queryPrimary)
+	switch err {
+	case nil:
+		return &resp, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
+}
+
 func (m *defaultUserModel) Insert(ctx context.Context, data *User) (sql.Result, error) {
 	auctionServerUserIdKey := fmt.Sprintf("%s%v", cacheAuctionServerUserIdPrefix, data.Id)
 	auctionServerUserUsernameKey := fmt.Sprintf("%s%v", cacheAuctionServerUserUsernamePrefix, data.Username)
+	auctionServerUserXidKey := fmt.Sprintf("%s%v", cacheAuctionServerUserXidPrefix, data.Xid)
 	ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
-		query := fmt.Sprintf("insert into %s (%s) values (?, ?)", m.table, userRowsExpectAutoSet)
-		return conn.ExecCtx(ctx, query, data.Username, data.Password)
-	}, auctionServerUserIdKey, auctionServerUserUsernameKey)
+		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?)", m.table, userRowsExpectAutoSet)
+		return conn.ExecCtx(ctx, query, data.Username, data.Password, data.Xid)
+	}, auctionServerUserIdKey, auctionServerUserUsernameKey, auctionServerUserXidKey)
 	return ret, err
 }
 
@@ -123,10 +148,11 @@ func (m *defaultUserModel) Update(ctx context.Context, newData *User) error {
 
 	auctionServerUserIdKey := fmt.Sprintf("%s%v", cacheAuctionServerUserIdPrefix, data.Id)
 	auctionServerUserUsernameKey := fmt.Sprintf("%s%v", cacheAuctionServerUserUsernamePrefix, data.Username)
+	auctionServerUserXidKey := fmt.Sprintf("%s%v", cacheAuctionServerUserXidPrefix, data.Xid)
 	_, err = m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, userRowsWithPlaceHolder)
-		return conn.ExecCtx(ctx, query, newData.Username, newData.Password, newData.Id)
-	}, auctionServerUserIdKey, auctionServerUserUsernameKey)
+		return conn.ExecCtx(ctx, query, newData.Username, newData.Password, newData.Xid, newData.Id)
+	}, auctionServerUserIdKey, auctionServerUserUsernameKey, auctionServerUserXidKey)
 	return err
 }
 

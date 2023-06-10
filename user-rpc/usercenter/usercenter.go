@@ -13,6 +13,8 @@ import (
 )
 
 type (
+	UserGetInfoReq   = pb.UserGetInfoReq
+	UserGetInfoResp  = pb.UserGetInfoResp
 	UserLoginReq     = pb.UserLoginReq
 	UserLoginResp    = pb.UserLoginResp
 	UserRegisterReq  = pb.UserRegisterReq
@@ -21,6 +23,7 @@ type (
 	Usercenter interface {
 		UserRegister(ctx context.Context, in *UserRegisterReq, opts ...grpc.CallOption) (*UserRegisterResp, error)
 		UserLogin(ctx context.Context, in *UserLoginReq, opts ...grpc.CallOption) (*UserLoginResp, error)
+		UserGetInfo(ctx context.Context, in *UserGetInfoReq, opts ...grpc.CallOption) (*UserGetInfoResp, error)
 	}
 
 	defaultUsercenter struct {
@@ -42,4 +45,9 @@ func (m *defaultUsercenter) UserRegister(ctx context.Context, in *UserRegisterRe
 func (m *defaultUsercenter) UserLogin(ctx context.Context, in *UserLoginReq, opts ...grpc.CallOption) (*UserLoginResp, error) {
 	client := pb.NewUsercenterClient(m.cli.Conn())
 	return client.UserLogin(ctx, in, opts...)
+}
+
+func (m *defaultUsercenter) UserGetInfo(ctx context.Context, in *UserGetInfoReq, opts ...grpc.CallOption) (*UserGetInfoResp, error) {
+	client := pb.NewUsercenterClient(m.cli.Conn())
+	return client.UserGetInfo(ctx, in, opts...)
 }

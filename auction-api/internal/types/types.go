@@ -2,34 +2,37 @@
 package types
 
 type AuctionPostReq struct {
-	AuctionName  string `json:"auction_name"`
-	PostUsername string `json:"post_username"`
-	BasePrice    int    `json:"base_price"`
-	Type         string `json:"type"`
+	AuctionName   string `json:"auction_name"`
+	PostUserXid   string `json:"post_user_xid"`
+	BasePrice     int    `json:"base_price"`
+	Type          string `json:"type"`
+	AuctionImgUrl string `json:"auction_img_url"`
 }
 
 type AuctionPostResp struct {
-	Id           int    `json:"id"`
-	Xid          string `json:"xid"`
-	AuctionName  string `json:"auction_name"`
-	PostUsername string `json:"post_username"`
-	BasePrice    int    `json:"base_price"`
-	Type         string `json:"type"`
+	Id            int    `json:"id"`
+	Xid           string `json:"xid"`
+	AuctionName   string `json:"auction_name"`
+	PostUserXid   string `json:"post_user_xid"`
+	BasePrice     int    `json:"base_price"`
+	Type          string `json:"type"`
+	AuctionImgUrl string `json:"auction_img_url"`
 }
 
 type AuctionOfferReq struct {
-	AuctionXid    string `json:"auction_xid"`
-	OfferUsername string `json:"offer_username"`
-	OfferPrice    int    `json:"offer_price"`
+	AuctionXid  string `json:"auction_xid"`
+	OffeUserXid string `json:"offer_user_xid"`
+	OfferPrice  int    `json:"offer_price"`
 }
 
 type AuctionOfferResp struct {
 	Id            int    `json:"id"`
 	Xid           string `json:"xid"`
 	AuctionName   string `json:"auction_name"`
-	PostUsername  string `json:"post_username"`
-	OfferUsername string `json:"offer_username"`
+	PostUserXid   string `json:"post_user_xid"`
+	OfferUserXid  string `json:"offer_user_xid"`
 	BasePrice     int    `json:"base_price"`
 	CurrentPrice  int    `json:"current_price"`
 	Type          string `json:"type"`
+	AuctionImgUrl string `json:"auction_img_url"`
 }
