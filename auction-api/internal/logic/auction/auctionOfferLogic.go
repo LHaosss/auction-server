@@ -8,7 +8,6 @@ import (
 	"auction_server/auction-api/internal/types"
 	"auction_server/auction-rpc/auctioncenter"
 	"auction_server/auction-rpc/pb"
-	"auction_server/auctionInfoManager-rpc/auctioninfomangercenter"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -54,13 +53,6 @@ func (l *AuctionOfferLogic) AuctionOffer(req *types.AuctionOfferReq) (resp *type
 	}
 
 	// 更新offer_info信息
-	_, err = l.svcCtx.AuctionInfoManagerRpcClient.UserOfferAuction(l.ctx, &auctioninfomangercenter.UserOfferAuctionReq{
-		UserXid:    req.OffeUserXid,
-		AuctionXid: req.AuctionXid,
-	})
-	if err != nil {
-		return nil, errors.New("更新offer_info信息失败")
-	}
 
 	return &types.AuctionOfferResp{
 		Id:           int(auctionOfferInfo.GetId()),

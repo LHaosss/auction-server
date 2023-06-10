@@ -2,6 +2,8 @@ package logic
 
 import (
 	"context"
+	"fmt"
+	"os"
 
 	"auction_server/user-rpc/internal/svc"
 	"auction_server/user-rpc/pb"
@@ -24,8 +26,10 @@ func NewUserGetInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserG
 }
 
 func (l *UserGetInfoLogic) UserGetInfo(in *pb.UserGetInfoReq) (*pb.UserGetInfoResp, error) {
+	fmt.Println("****************************")
 	user, err := l.svcCtx.UserModel.FindOneByXid(l.ctx, in.GetXid())
 	if err != nil {
+		os.WriteFile("er.txt", []byte(err.Error()), os.ModeAppend)
 		return nil, err
 	}
 

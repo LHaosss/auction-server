@@ -1,21 +1,15 @@
 Name: auction-api
 Host: 0.0.0.0
-Port: 8888
-
-AuctionRpcConf:
-  Etcd:
-  Hosts:
-    - 127.0.0.1:2379
-  Key: auction.rpc
+Port: 8882
 
 UserRpcConf:
   Etcd:
-  Hosts:
-    - 127.0.0.1:2379
-  Key: user.rpc
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
 
-AuctionInfoManagerRpcConf:
+AuctionRpcConf:
   Etcd:
-  Hosts:
-    - 127.0.0.1:2379
-  Key: auctioninfomanager.rpc
+    Hosts:
+      - 127.0.0.1:2379
+    Key: auction.rpc

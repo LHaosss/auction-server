@@ -71,3 +71,64 @@ User-Agent: PostmanRuntime/7.32.2
 2023-06-08T22:23:22.556+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss true}, {lllhhh true}), error: Error 1062 (23000): Duplicate entry 'LHaosss' for key 'user.username_UNIQUE'	caller=sqlx/utils.go:140	trace=1a62345f62990948762b8f66a2ff77b5	span=61b3e8aaee20502c
 2023-06-08T22:24:43.046+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss true}, {lllhhh true}), error: Error 1062 (23000): Duplicate entry 'LHaosss' for key 'user.username_UNIQUE'	caller=sqlx/utils.go:140	trace=37c37cafd00230dbd98a7f1f6e4eef26	span=f2541991045d3d79
 2023-06-08T22:25:08.518+08:00	[31;1m error [0m	stmt: insert into `user` (`username`,`password`) values ({LHaosss true}, {lllhhh true}), error: Error 1062 (23000): Duplicate entry 'LHaosss' for key 'user.username_UNIQUE'	caller=sqlx/utils.go:140	trace=c03a10f8997af713cd15628259634188	span=9d80dad443c8f673
+2023-06-10T17:05:37.574+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"LHaosss1"  password:"lllhhh" - rpc error: code = Unknown desc = 该用户已存在	duration=19.1ms	caller=clientinterceptors/durationinterceptor.go:35	trace=ff6a5384170aaf885be53c706f84cb37	span=0a76adfbab301611
+2023-06-10T17:05:37.575+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:60034 - PostmanRuntime/7.32.2
+POST /userapi/v1/user/register HTTP/1.1
+Host: 0.0.0.0:8881
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 57
+Content-Type: application/json
+Postman-Token: e409da0e-9722-474e-ad35-1b6db48e69af
+User-Agent: PostmanRuntime/7.32.2
+
+{
+    "user_name": "LHaosss1",
+    "password": "lllhhh"
+}	duration=21.2ms	caller=handler/loghandler.go:162	trace=ff6a5384170aaf885be53c706f84cb37	span=90cdabe24263b3d7
+2023-06-10T17:20:20.146+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T17:20:37.115+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T17:46:43.326+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-10T17:48:58.938+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T17:51:15.617+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T17:52:15.029+08:00	 error 	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T17:53:01.899+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T17:53:52.597+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"LHaosss1"  password:"lllhhh" - rpc error: code = Unknown desc = 该用户已存在	duration=75.1ms	caller=clientinterceptors/durationinterceptor.go:35	trace=64387c2e0cbb60205b9740b7e2f7c531	span=8a3c1dc7ecb6c5c1
+2023-06-10T17:53:52.603+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:63563 - PostmanRuntime/7.32.2
+POST /userapi/v1/user/register HTTP/1.1
+Host: 0.0.0.0:8881
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 57
+Content-Type: application/json
+Postman-Token: 9871f60b-71f1-4bb1-9c60-2f426131f9aa
+User-Agent: PostmanRuntime/7.32.2
+
+{
+    "user_name": "LHaosss1",
+    "password": "lllhhh"
+}	duration=100.9ms	caller=handler/loghandler.go:162	trace=64387c2e0cbb60205b9740b7e2f7c531	span=798b89fea086c50a
+2023-06-10T18:10:27.890+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"LHaosss1"  password:"lllhhh" - rpc error: code = Unknown desc = 未找到该用户	duration=122.2ms	caller=clientinterceptors/durationinterceptor.go:35	trace=636c94fe7022936d6d6adfb96b900a8b	span=833ef10fbb9158cb
+2023-06-10T18:10:27.892+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 127.0.0.1:49885 - PostmanRuntime/7.32.2
+POST /userapi/v1/user/login HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 57
+Content-Type: application/json
+Postman-Token: a91d2298-74e4-4093-a2cf-d5d3aba1213c
+User-Agent: PostmanRuntime/7.32.2
+
+{
+    "user_name": "LHaosss1",
+    "password": "lllhhh"
+}	duration=131.9ms	caller=handler/loghandler.go:162	trace=636c94fe7022936d6d6adfb96b900a8b	span=3c3c287cef6d3f41
+2023-06-10T18:13:21.297+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T18:13:52.867+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T18:15:35.961+08:00	[31;1m error [0m	listen tcp 0.0.0.0:8881: bind: address already in use	caller=rest/server.go:314
+2023-06-10T18:22:46.452+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-10T18:26:35.375+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-10T18:28:20.026+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34

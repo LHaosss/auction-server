@@ -8,7 +8,6 @@ import (
 type Config struct {
 	rest.RestConf
 
-	AuctionRpcConf            zrpc.RpcClientConf
-	UserRpcConf               zrpc.RpcClientConf
-	AuctionInfoManagerRpcConf zrpc.RpcClientConf
+	UserRpcConf    zrpc.RpcClientConf
+	AuctionRpcConf zrpc.RpcClientConf
 }

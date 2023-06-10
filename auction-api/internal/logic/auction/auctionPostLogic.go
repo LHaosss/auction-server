@@ -3,12 +3,12 @@ package auction
 import (
 	"context"
 	"errors"
+	"fmt"
 
 	"auction_server/auction-api/internal/svc"
 	"auction_server/auction-api/internal/types"
 	"auction_server/auction-rpc/auctioncenter"
 	"auction_server/auction-rpc/pb"
-	"auction_server/auctionInfoManager-rpc/auctioninfomangercenter"
 	"auction_server/user-rpc/usercenter"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -38,10 +38,11 @@ func (l *AuctionPostLogic) AuctionPost(req *types.AuctionPostReq) (resp *types.A
 	}
 
 	// 2、检验post_username是否合法 调用user-rpc的getUserInfo信息，判断是否存在该用户
-	userInfo, err := l.svcCtx.UserRpcClient.UserGetInfo(l.ctx, &usercenter.UserGetInfoReq{
+	_, err = l.svcCtx.UserRpcClient.UserGetInfo(l.ctx, &usercenter.UserGetInfoReq{
 		Xid: req.PostUserXid,
 	})
 	if err != nil {
+		fmt.Println("##########", err, "#########")
 		return nil, errors.New("提交竞拍的用户不合规")
 	}
 
@@ -77,13 +78,6 @@ func (l *AuctionPostLogic) AuctionPost(req *types.AuctionPostReq) (resp *types.A
 	}
 
 	// 4、添加user_auction信息（向用户提交的竞拍信息中添加信息）
-	_, err = l.svcCtx.AuctionInfoManagerRpcClient.UserPostAuction(l.ctx, &auctioninfomangercenter.UserPostAuctionReq{
-		UserXid:    userInfo.GetXid(),
-		AuctionXid: auctionInfo.GetXid(),
-	})
-	if err != nil {
-		return nil, errors.New("添加post_info失败")
-	}
 
 	return &types.AuctionPostResp{
 		Id:          int(auctionInfo.GetId()),

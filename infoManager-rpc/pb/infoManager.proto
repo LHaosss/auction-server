@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+enum Type {
+    ArtWork = 0;
+    ArtsCrafts = 1;
+    Jewelry = 2;
+    Home = 3;
+    Car = 4;
+    SmokeDrink = 5;
+    Clothes = 6;
+    Others = 7;
+}
+
+message Auction {
+    string auctionXid = 1;
+    string auctionName = 2;
+    string auctionImgUrl = 3;
+    int32 basePrice = 4;
+    int32 currentPrice = 5;
+    string postUserXid = 6;
+    string offerUserXid = 7;
+    Type type = 8;
+}
+
+message GetUserPostInfoReq {
+    string userXid = 1;
+}
+message GetUserPostInfoResp {
+    repeated Auction auctions = 1;
+}
+
+message GetUserOfferInfoReq {
+    string userXid = 1;
+}
+message GetUserOfferInfoResp {
+    repeated Auction auctions = 1;
+}
+
+message UserPostAuctionReq {
+    string userXid = 1;
+    string auctionXid = 2;
+}
+message UserPostAuctionResp {
+    bool flag = 1;
+}
+
+message UserOfferAuctionReq {
+    string userXid = 1;
+    string auctionXid = 2;
+}
+message UserOfferAuctionResp {
+    bool flag = 1;
+}
+
+service infomanagercenter {
+    rpc GetUserPostInfo(GetUserPostInfoReq) returns(GetUserPostInfoResp);
+    rpc GetUserOfferInfo(GetUserOfferInfoReq) returns(GetUserOfferInfoResp);
+    rpc UserPostAuction(UserPostAuctionReq) returns(UserPostAuctionResp);
+    rpc UserOfferAuction(UserOfferAuctionReq) returns(UserOfferAuctionResp);
+}
