@@ -36,3 +36,8 @@ func (s *AuctioncenterServer) GetAuctionInfo(ctx context.Context, in *pb.GetAuct
 	l := logic.NewGetAuctionInfoLogic(ctx, s.svcCtx)
 	return l.GetAuctionInfo(in)
 }
+
+func (s *AuctioncenterServer) GetAuctionsByTime(ctx context.Context, in *pb.GetAuctionsByTimeReq) (*pb.GetAuctionsByTimeResp, error) {
+	l := logic.NewGetAuctionsByTimeLogic(ctx, s.svcCtx)
+	return l.GetAuctionsByTime(in)
+}

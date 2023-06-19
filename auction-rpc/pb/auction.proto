@@ -4,6 +4,7 @@ option go_package = "./pb";
 
 package pb;
 
+
 enum AuctionType {
     ArtWork = 0;
     ArtsCrafts = 1;
@@ -72,9 +73,17 @@ message GetAuctionInfoResp {
     AuctionInfo auctionInfo = 1;
 }
 
+message GetAuctionsByTimeReq {
+}
+
+message GetAuctionsByTimeResp {
+    repeated AuctionInfo auctionInfos = 1;
+}
+
 // service
 service auctioncenter {
     rpc AuctionPost (AuctionPostReq) returns (AuctionPostResp);
     rpc AuctionOffer (AuctionOfferReq) returns (AuctionOfferResp);
     rpc GetAuctionInfo (GetAuctionInfoReq) returns (GetAuctionInfoResp);
+    rpc GetAuctionsByTime (GetAuctionsByTimeReq) returns (GetAuctionsByTimeResp);
 }

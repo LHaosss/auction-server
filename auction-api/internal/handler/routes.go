@@ -23,6 +23,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/auction/offer",
 				Handler: auction.AuctionOfferHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/auction/auctions/time",
+				Handler: auction.GetAuctionsByTimeHandler(serverCtx),
+			},
 		},
 		rest.WithPrefix("/auction/v1"),
 	)

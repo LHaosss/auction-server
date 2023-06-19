@@ -1,0 +1,30 @@
+// api语法版本
+syntax = "v1"
+
+info(
+	author: "lhaosss"
+	date:   "2023-06-14"
+	desc:   "auction-server/img-api"
+)
+
+type (
+	ImgUploadResp {
+		ImgUrl string `json:"img_url"`
+		OK     int    `json:"ok"`
+	}
+)
+
+@server(
+	group: img
+	prefix: img/v1
+)
+
+service img-api{
+	@doc "上传图片"
+	@handler imgUpload
+	post /img/upload returns (ImgUploadResp)
+	
+	@doc "加载图片"
+	@handler imgShow
+	get /img/show
+}

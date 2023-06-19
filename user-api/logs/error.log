@@ -132,3 +132,467 @@ User-Agent: PostmanRuntime/7.32.2
 2023-06-10T18:22:46.452+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
 2023-06-10T18:26:35.375+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
 2023-06-10T18:28:20.026+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-13T12:27:42.315+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"LHaosss1"  password:"lllhhh" - rpc error: code = Unknown desc = 该用户已存在	duration=41.9ms	caller=clientinterceptors/durationinterceptor.go:35	trace=47ee22273bf7075a67be32c52a0f0b18	span=9bc6493a81934611
+2023-06-13T12:27:42.316+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:52822 - PostmanRuntime/7.32.2
+POST /userapi/v1/user/register HTTP/1.1
+Host: 0.0.0.0:8881
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 57
+Content-Type: application/json
+Postman-Token: 66e7f05a-5cdb-4c6a-a806-2175288e8126
+User-Agent: PostmanRuntime/7.32.2
+
+{
+    "user_name": "LHaosss1",
+    "password": "lllhhh"
+}	duration=43.5ms	caller=handler/loghandler.go:162	trace=47ee22273bf7075a67be32c52a0f0b18	span=59d91eff111bfaeb
+2023-06-13T14:59:45.398+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"sss"  password:"sss" - rpc error: code = Unknown desc = 该用户已存在	duration=92.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=33917a557bfc1f7553016ff1ed0a1c27	span=a07b149a6c895e41
+2023-06-13T14:59:45.408+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:52735 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=114.5ms	caller=handler/loghandler.go:162	trace=33917a557bfc1f7553016ff1ed0a1c27	span=cd9276e0b456c1b8
+2023-06-13T15:01:57.545+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"sss"  password:"sss" - rpc error: code = Unknown desc = 该用户已存在	duration=63.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=6207c3d74a0583de27221d6365ab9ee4	span=b51bb0fd0cad1d02
+2023-06-13T15:01:57.548+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:53503 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=74.8ms	caller=handler/loghandler.go:162	trace=6207c3d74a0583de27221d6365ab9ee4	span=8d3901fc2121083a
+2023-06-13T15:13:19.987+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"sss"  password:"ssssss" - rpc error: code = Unknown desc = 密码错误	duration=26.1ms	caller=clientinterceptors/durationinterceptor.go:35	trace=c814b9e9e75562b8c4d03127d7964b28	span=133b4a420d06e47e
+2023-06-13T15:13:20.002+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 127.0.0.1:56884 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/login HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 38
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"ssssss"}	duration=80.3ms	caller=handler/loghandler.go:162	trace=c814b9e9e75562b8c4d03127d7964b28	span=e11e9bb5b66b4927
+2023-06-13T20:25:31.307+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-13T20:49:35.430+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-13T20:53:29.386+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"sss" password:"sss" - rpc error: code = Unknown desc = 未找到该用户	duration=70.3ms	caller=clientinterceptors/durationinterceptor.go:35	trace=ce4ab6ef7e25bc8a2a1987927e218482	span=9152619047f4dc58
+2023-06-13T20:53:29.386+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 127.0.0.1:50127 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/login HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=71.2ms	caller=handler/loghandler.go:162	trace=ce4ab6ef7e25bc8a2a1987927e218482	span=33980e3020596599
+2023-06-13T20:53:59.568+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"sss" password:"sss" - rpc error: code = Unknown desc = 未找到该用户	duration=76.4ms	caller=clientinterceptors/durationinterceptor.go:35	trace=3db66f3f4371a08c05eeb8363e5e8ebd	span=dddfb72f3ed8f102
+2023-06-13T20:53:59.569+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 127.0.0.1:50270 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/login HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=76.8ms	caller=handler/loghandler.go:162	trace=3db66f3f4371a08c05eeb8363e5e8ebd	span=334e3b000a9d1d45
+2023-06-13T20:54:08.154+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"sss" password:"sss" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=113.9ms	caller=clientinterceptors/durationinterceptor.go:35	trace=de195b72e630f04d2cb747e2e7856b7a	span=1a94866a6c174819
+2023-06-13T20:54:08.154+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:50320 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=114.4ms	caller=handler/loghandler.go:162	trace=de195b72e630f04d2cb747e2e7856b7a	span=a7e258a2f414d6e5
+2023-06-13T20:54:48.677+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"lhaosss123" password:"123" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=46.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=985b5396b93545215294c639aecd1d77	span=197cd822ab0be55b
+2023-06-13T20:54:48.677+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:50502 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 42
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"lhaosss123","password":"123"}	duration=47.6ms	caller=handler/loghandler.go:162	trace=985b5396b93545215294c639aecd1d77	span=31f065dfbcc314bb
+2023-06-13T20:58:32.888+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"llllllll" password:"aaaa" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=99.1ms	caller=clientinterceptors/durationinterceptor.go:35	trace=dfeb4790d76e5bb410b58a7629a16cc1	span=7470c52ee799b9ab
+2023-06-13T20:58:32.888+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:51445 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 41
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"llllllll","password":"aaaa"}	duration=99.6ms	caller=handler/loghandler.go:162	trace=dfeb4790d76e5bb410b58a7629a16cc1	span=076c73ea7e94fbc8
+2023-06-13T20:59:41.439+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"sss" password:"sss" - rpc error: code = Unknown desc = 未找到该用户	duration=92.7ms	caller=clientinterceptors/durationinterceptor.go:35	trace=13b9b66d36acc647fb5d956ec719c7ba	span=04a994e4a4055543
+2023-06-13T20:59:41.441+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 127.0.0.1:51742 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/login HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=94.4ms	caller=handler/loghandler.go:162	trace=13b9b66d36acc647fb5d956ec719c7ba	span=2538ad742fa65e1e
+2023-06-13T21:03:07.501+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"iii" password:"iii" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=70.9ms	caller=clientinterceptors/durationinterceptor.go:35	trace=fd9d141ac3672620fa6c8c2d26682f3d	span=88715f2526e36005
+2023-06-13T21:03:07.501+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:52766 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"iii","password":"iii"}	duration=72.1ms	caller=handler/loghandler.go:162	trace=fd9d141ac3672620fa6c8c2d26682f3d	span=5ae49e66fd9602ae
+2023-06-13T21:05:39.154+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"iii" password:"iii" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=71.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=d0603e0bf07bd508c6db9381025a1fc8	span=af0c129adddb0130
+2023-06-13T21:05:39.155+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:53431 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"iii","password":"iii"}	duration=72.3ms	caller=handler/loghandler.go:162	trace=d0603e0bf07bd508c6db9381025a1fc8	span=b5842bf09ce7b3f8
+2023-06-13T21:05:41.900+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"iii" password:"iii" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=75.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=fefeb01d02aef2f700fcd2165694bd67	span=b8a52a92a87fd1b1
+2023-06-13T21:05:41.901+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:53456 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"iii","password":"iii"}	duration=76.0ms	caller=handler/loghandler.go:162	trace=fefeb01d02aef2f700fcd2165694bd67	span=d21e8cd7c33eda1d
+2023-06-13T21:08:52.165+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"sss" password:"sss" - rpc error: code = Unknown desc = 未找到该用户	duration=3.1ms	caller=clientinterceptors/durationinterceptor.go:35	trace=6efdaae940a5d79c4f6fa92ccc02977b	span=1776984d81ccedfe
+2023-06-13T21:08:52.165+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 127.0.0.1:54466 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/login HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=3.6ms	caller=handler/loghandler.go:162	trace=6efdaae940a5d79c4f6fa92ccc02977b	span=f5e6f8f0fb0748b5
+2023-06-13T21:09:10.281+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-13T21:09:28.846+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"sss" password:"sss" - rpc error: code = Unknown desc = 未找到该用户	duration=2.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=7ced1bc8653288927b222b7574b172a9	span=e456564cf76230da
+2023-06-13T21:09:28.846+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 127.0.0.1:54642 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/login HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"sss","password":"sss"}	duration=3.5ms	caller=handler/loghandler.go:162	trace=7ced1bc8653288927b222b7574b172a9	span=b289dfaa5a3d0450
+2023-06-13T21:09:53.414+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"qqq" password:"qqq" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=1.9ms	caller=clientinterceptors/durationinterceptor.go:35	trace=09dab8ce59a736f0a4c60b7638f9d95a	span=4332045b1f06cf43
+2023-06-13T21:09:53.414+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:54754 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"qqq","password":"qqq"}	duration=2.3ms	caller=handler/loghandler.go:162	trace=09dab8ce59a736f0a4c60b7638f9d95a	span=c31621b497620d20
+2023-06-13T21:10:20.773+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"qqq" password:"qqq" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=1.0ms	caller=clientinterceptors/durationinterceptor.go:35	trace=aa0c75c412eb70c324f4dab7df28d070	span=b76fb4836d9fa6f5
+2023-06-13T21:10:20.773+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:54877 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"qqq","password":"qqq"}	duration=1.3ms	caller=handler/loghandler.go:162	trace=aa0c75c412eb70c324f4dab7df28d070	span=c42930290b2a42cb
+2023-06-13T21:11:05.962+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-13T21:11:16.483+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"qqq" password:"qqq" - rpc error: code = Unknown desc = 注册出错，请重试1	duration=2.4ms	caller=clientinterceptors/durationinterceptor.go:35	trace=98f679a754b3c23b9af09dff958dabbb	span=701de3f3ca65c10c
+2023-06-13T21:11:16.483+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:55117 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"qqq","password":"qqq"}	duration=2.6ms	caller=handler/loghandler.go:162	trace=98f679a754b3c23b9af09dff958dabbb	span=263d457b4f9184d5
+2023-06-13T21:13:27.682+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-13T21:13:37.968+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"qqq" password:"qqq" - rpc error: code = Unknown desc = 该用户已存在	duration=46.6ms	caller=clientinterceptors/durationinterceptor.go:35	trace=d6aee3e1a30c8a27b65edae73cf5bd62	span=ba381cfb774afb3c
+2023-06-13T21:13:37.968+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:55772 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"qqq","password":"qqq"}	duration=47.2ms	caller=handler/loghandler.go:162	trace=d6aee3e1a30c8a27b65edae73cf5bd62	span=2229f931d09f27c7
+2023-06-18T14:20:13.595+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-06-18T21:11:27.709+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"非理" password:"293977sbbA_" - rpc error: code = DeadlineExceeded desc = context deadline exceeded	duration=2029.6ms	caller=clientinterceptors/durationinterceptor.go:35	trace=2b9146d413de164b1d9f7bf7b0a24f9b	span=4ddd4feeeb15364f
+2023-06-18T21:11:27.712+08:00	[31;1m error [0m	[HTTP] [103;90;1m 504 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:59927 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 46
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"非理","password":"293977sbbA_"}	duration=2049.4ms	caller=handler/loghandler.go:162	trace=2b9146d413de164b1d9f7bf7b0a24f9b	span=6ab8cf9d898b0b87
+2023-06-18T21:12:08.387+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"非理" password:"293977sbb" - rpc error: code = Unavailable desc = last connection error: connection error: desc = "error reading server preface: read tcp 198.18.0.1:60128->192.168.1.3:9991: read: connection reset by peer"	duration=0.5ms	caller=clientinterceptors/durationinterceptor.go:35	trace=f1222c674dde24cba1e3907b71ee5f50	span=0461a5b6b68322d4
+2023-06-18T21:12:08.387+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:60160 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 44
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"非理","password":"293977sbb"}	duration=2.6ms	caller=handler/loghandler.go:162	trace=f1222c674dde24cba1e3907b71ee5f50	span=2f70ea331b90dbc7
+2023-06-18T21:12:55.272+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserRegister - username:"feili" password:"293977sbb" - rpc error: code = Unavailable desc = last connection error: connection error: desc = "error reading server preface: read tcp 198.18.0.1:60362->192.168.1.3:9991: read: connection reset by peer"	duration=0.2ms	caller=clientinterceptors/durationinterceptor.go:35	trace=671d54872b12a94fd6be35da65ca9713	span=bc8be49edab76727
+2023-06-18T21:12:55.272+08:00	[31;1m error [0m	[HTTP] [103;90;1m 503 [0m - [46;97;1m POST [0m /userapi/v1/user/register - 127.0.0.1:60422 - Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+POST /userapi/v1/user/register HTTP/1.1
+Host: 127.0.0.1:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en,zh-CN;q=0.9,zh;q=0.8
+Connection: keep-alive
+Content-Length: 43
+Content-Type: application/json
+Origin: http://localhost:5173
+Referer: http://localhost:5173/
+Sec-Ch-Ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"
+Sec-Ch-Ua-Mobile: ?1
+Sec-Ch-Ua-Platform: "Android"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36
+
+{"username":"feili","password":"293977sbb"}	duration=2.9ms	caller=handler/loghandler.go:162	trace=671d54872b12a94fd6be35da65ca9713	span=e0e6f46bca35bdbb
+2023-06-18T21:14:09.705+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34

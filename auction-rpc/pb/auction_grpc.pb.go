@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Auctioncenter_AuctionPost_FullMethodName    = "/pb.auctioncenter/AuctionPost"
-	Auctioncenter_AuctionOffer_FullMethodName   = "/pb.auctioncenter/AuctionOffer"
-	Auctioncenter_GetAuctionInfo_FullMethodName = "/pb.auctioncenter/GetAuctionInfo"
+	Auctioncenter_AuctionPost_FullMethodName       = "/pb.auctioncenter/AuctionPost"
+	Auctioncenter_AuctionOffer_FullMethodName      = "/pb.auctioncenter/AuctionOffer"
+	Auctioncenter_GetAuctionInfo_FullMethodName    = "/pb.auctioncenter/GetAuctionInfo"
+	Auctioncenter_GetAuctionsByTime_FullMethodName = "/pb.auctioncenter/GetAuctionsByTime"
 )
 
 // AuctioncenterClient is the client API for Auctioncenter service.
@@ -31,6 +32,7 @@ type AuctioncenterClient interface {
 	AuctionPost(ctx context.Context, in *AuctionPostReq, opts ...grpc.CallOption) (*AuctionPostResp, error)
 	AuctionOffer(ctx context.Context, in *AuctionOfferReq, opts ...grpc.CallOption) (*AuctionOfferResp, error)
 	GetAuctionInfo(ctx context.Context, in *GetAuctionInfoReq, opts ...grpc.CallOption) (*GetAuctionInfoResp, error)
+	GetAuctionsByTime(ctx context.Context, in *GetAuctionsByTimeReq, opts ...grpc.CallOption) (*GetAuctionsByTimeResp, error)
 }
 
 type auctioncenterClient struct {
@@ -68,6 +70,15 @@ func (c *auctioncenterClient) GetAuctionInfo(ctx context.Context, in *GetAuction
 	return out, nil
 }
 
+func (c *auctioncenterClient) GetAuctionsByTime(ctx context.Context, in *GetAuctionsByTimeReq, opts ...grpc.CallOption) (*GetAuctionsByTimeResp, error) {
+	out := new(GetAuctionsByTimeResp)
+	err := c.cc.Invoke(ctx, Auctioncenter_GetAuctionsByTime_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuctioncenterServer is the server API for Auctioncenter service.
 // All implementations must embed UnimplementedAuctioncenterServer
 // for forward compatibility
@@ -75,6 +86,7 @@ type AuctioncenterServer interface {
 	AuctionPost(context.Context, *AuctionPostReq) (*AuctionPostResp, error)
 	AuctionOffer(context.Context, *AuctionOfferReq) (*AuctionOfferResp, error)
 	GetAuctionInfo(context.Context, *GetAuctionInfoReq) (*GetAuctionInfoResp, error)
+	GetAuctionsByTime(context.Context, *GetAuctionsByTimeReq) (*GetAuctionsByTimeResp, error)
 	mustEmbedUnimplementedAuctioncenterServer()
 }
 
@@ -90,6 +102,9 @@ func (UnimplementedAuctioncenterServer) AuctionOffer(context.Context, *AuctionOf
 }
 func (UnimplementedAuctioncenterServer) GetAuctionInfo(context.Context, *GetAuctionInfoReq) (*GetAuctionInfoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAuctionInfo not implemented")
+}
+func (UnimplementedAuctioncenterServer) GetAuctionsByTime(context.Context, *GetAuctionsByTimeReq) (*GetAuctionsByTimeResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAuctionsByTime not implemented")
 }
 func (UnimplementedAuctioncenterServer) mustEmbedUnimplementedAuctioncenterServer() {}
 
@@ -158,6 +173,24 @@ func _Auctioncenter_GetAuctionInfo_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auctioncenter_GetAuctionsByTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAuctionsByTimeReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuctioncenterServer).GetAuctionsByTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auctioncenter_GetAuctionsByTime_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuctioncenterServer).GetAuctionsByTime(ctx, req.(*GetAuctionsByTimeReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auctioncenter_ServiceDesc is the grpc.ServiceDesc for Auctioncenter service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -176,6 +209,10 @@ var Auctioncenter_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAuctionInfo",
 			Handler:    _Auctioncenter_GetAuctionInfo_Handler,
+		},
+		{
+			MethodName: "GetAuctionsByTime",
+			Handler:    _Auctioncenter_GetAuctionsByTime_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

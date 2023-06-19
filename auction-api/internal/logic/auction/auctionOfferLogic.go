@@ -3,6 +3,7 @@ package auction
 import (
 	"context"
 	"errors"
+	"fmt"
 
 	"auction_server/auction-api/internal/svc"
 	"auction_server/auction-api/internal/types"
@@ -27,6 +28,7 @@ func NewAuctionOfferLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Auct
 }
 
 func (l *AuctionOfferLogic) AuctionOffer(req *types.AuctionOfferReq) (resp *types.AuctionOfferResp, err error) {
+	fmt.Println("接收到请求")
 	// 验证参数是否合法
 	err = validAuctionOfferReq(req)
 	if err != nil {

@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"fmt"
 
 	"auction_server/user-rpc/internal/svc"
 	"auction_server/user-rpc/model/user_model"
@@ -32,15 +33,19 @@ func (l *UserRegisterLogic) UserRegister(in *pb.UserRegisterReq) (*pb.UserRegist
 	// 验证请求
 	err := validUserRegisterReq(in)
 	if err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 
 	// // 查询数据库是否用户已存在
 	_, err = l.svcCtx.UserModel.FindOneByUsername(l.ctx, sql.NullString{String: in.Username, Valid: true})
 	if err == nil {
+		fmt.Println(err)
 		return nil, errors.New("该用户已存在")
 	}
+
 	if err != nil && err != sqlx.ErrNotFound {
+		fmt.Println("####", err)
 		return nil, errors.New("注册出错，请重试1")
 	}
 
@@ -59,6 +64,7 @@ func (l *UserRegisterLogic) UserRegister(in *pb.UserRegisterReq) (*pb.UserRegist
 	}
 	_, err = l.svcCtx.UserModel.Insert(l.ctx, data)
 	if err != nil {
+		fmt.Println(err)
 		return nil, errors.New("注册出错，请重试2")
 	}
 

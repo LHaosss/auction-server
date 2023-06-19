@@ -1,6 +1,13 @@
 Name: user.rpc
 ListenOn: 0.0.0.0:9991
 
+Log:
+  ServiceName: user-api
+  Mode: file
+  Path: logs
+  Level: error
+  Encoding: plain
+
 Etcd:
   Hosts:
     - 127.0.0.1:2379
@@ -11,5 +18,4 @@ DB:
 
 CacheRedis:
   - Host: 0.0.0.0:6379
-    Pass: 293977sbbA_
     Type: node

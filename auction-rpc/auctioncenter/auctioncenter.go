@@ -13,18 +13,21 @@ import (
 )
 
 type (
-	AuctionInfo        = pb.AuctionInfo
-	AuctionOfferReq    = pb.AuctionOfferReq
-	AuctionOfferResp   = pb.AuctionOfferResp
-	AuctionPostReq     = pb.AuctionPostReq
-	AuctionPostResp    = pb.AuctionPostResp
-	GetAuctionInfoReq  = pb.GetAuctionInfoReq
-	GetAuctionInfoResp = pb.GetAuctionInfoResp
+	AuctionInfo           = pb.AuctionInfo
+	AuctionOfferReq       = pb.AuctionOfferReq
+	AuctionOfferResp      = pb.AuctionOfferResp
+	AuctionPostReq        = pb.AuctionPostReq
+	AuctionPostResp       = pb.AuctionPostResp
+	GetAuctionInfoReq     = pb.GetAuctionInfoReq
+	GetAuctionInfoResp    = pb.GetAuctionInfoResp
+	GetAuctionsByTimeReq  = pb.GetAuctionsByTimeReq
+	GetAuctionsByTimeResp = pb.GetAuctionsByTimeResp
 
 	Auctioncenter interface {
 		AuctionPost(ctx context.Context, in *AuctionPostReq, opts ...grpc.CallOption) (*AuctionPostResp, error)
 		AuctionOffer(ctx context.Context, in *AuctionOfferReq, opts ...grpc.CallOption) (*AuctionOfferResp, error)
 		GetAuctionInfo(ctx context.Context, in *GetAuctionInfoReq, opts ...grpc.CallOption) (*GetAuctionInfoResp, error)
+		GetAuctionsByTime(ctx context.Context, in *GetAuctionsByTimeReq, opts ...grpc.CallOption) (*GetAuctionsByTimeResp, error)
 	}
 
 	defaultAuctioncenter struct {
@@ -51,4 +54,9 @@ func (m *defaultAuctioncenter) AuctionOffer(ctx context.Context, in *AuctionOffe
 func (m *defaultAuctioncenter) GetAuctionInfo(ctx context.Context, in *GetAuctionInfoReq, opts ...grpc.CallOption) (*GetAuctionInfoResp, error) {
 	client := pb.NewAuctioncenterClient(m.cli.Conn())
 	return client.GetAuctionInfo(ctx, in, opts...)
+}
+
+func (m *defaultAuctioncenter) GetAuctionsByTime(ctx context.Context, in *GetAuctionsByTimeReq, opts ...grpc.CallOption) (*GetAuctionsByTimeResp, error) {
+	client := pb.NewAuctioncenterClient(m.cli.Conn())
+	return client.GetAuctionsByTime(ctx, in, opts...)
 }

@@ -32,6 +32,8 @@ type (
 		FindOneByXid(ctx context.Context, xid sql.NullString) (*Auction, error)
 		Update(ctx context.Context, data *Auction) error
 		Delete(ctx context.Context, id int64) error
+		// manual functions
+		FindMajority(ctx context.Context) (*[]*Auction, error) 
 	}
 
 	defaultAuctionModel struct {

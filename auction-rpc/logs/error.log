@@ -1,0 +1,1 @@
+2023-06-18T14:23:19.568+08:00	[31;1m error [0m	stmt: select * from `auction` order by create_time desc limit 16, error: Error 1054 (42S22): Unknown column 'create_time' in 'order clause'	caller=sqlx/utils.go:140	trace=66c3646ce6863c5d554ea032577b4d61	span=520ffeaec5162d4f

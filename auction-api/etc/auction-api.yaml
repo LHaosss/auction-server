@@ -2,6 +2,13 @@ Name: auction-api
 Host: 0.0.0.0
 Port: 8882
 
+Log:
+  ServiceName: user-api
+  Mode: file
+  Path: logs
+  Level: error
+  Encoding: plain
+
 UserRpcConf:
   Etcd:
     Hosts:

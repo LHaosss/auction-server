@@ -36,3 +36,18 @@ type AuctionOfferResp struct {
 	Type          string `json:"type"`
 	AuctionImgUrl string `json:"auction_img_url"`
 }
+
+type AuctionInfo struct {
+	AuctionName   string `json:"auction_name"`
+	AuctionXid    string `json:"auction_xid"`
+	AuctionImgUrl string `json:"auction_img_url"`
+	PostUserXid   string `json:"post_user_xid"`
+	OfferUserXid  string `json:"offer_user_xid"`
+	BasePrice     int    `json:"base_price"`
+	CurrentPrice  int    `json:"current_price"`
+	Type          string `json:"type"`
+}
+
+type GetAuctionsByTimeResp struct {
+	AuctionsInfo []*AuctionInfo `json:"auctions_info"`
+}

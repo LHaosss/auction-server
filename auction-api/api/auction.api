@@ -45,6 +45,22 @@ type (
 	}
 )
 
+type (
+	AuctionInfo {
+		AuctionName   string `json:"auction_name"`
+		AuctionXid    string `json:"auction_xid"`
+		AuctionImgUrl string `json:"auction_img_url"`
+		PostUserXid   string `json:"post_user_xid"`
+		OfferUserXid  string `json:"offer_user_xid"`
+		BasePrice     int    `json:"base_price"`
+		CurrentPrice  int    `json:"current_price"`
+		Type          string `json:"type"`
+	}
+	GetAuctionsByTimeResp {
+		AuctionsInfo []*AuctionInfo `json:"auctions_info"`
+	}
+)
+
 @server(
 	group: auction
 	prefix: auction/v1
@@ -58,4 +74,8 @@ service auction-api{
 	@doc "竞拍"
 	@handler auctionOffer
 	post /auction/offer (AuctionOfferReq) returns (AuctionOfferResp)
+	
+	@doc "按时间顺序获取拍卖信息"
+	@handler getAuctionsByTime
+	get /auction/auctions/time returns (GetAuctionsByTimeResp)
 }
