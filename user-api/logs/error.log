@@ -596,3 +596,22 @@ User-Agent: Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, 
 
 {"username":"feili","password":"293977sbb"}	duration=2.9ms	caller=handler/loghandler.go:162	trace=671d54872b12a94fd6be35da65ca9713	span=e0e6f46bca35bdbb
 2023-06-18T21:14:09.705+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-07-06T14:07:18.153+08:00	[31;1m error [0m	bad resolver state	caller=internal/discovbuilder.go:34
+2023-07-06T16:12:24.673+08:00	[31;1m error [0m	fail - etcd:/127.0.0.1:2379/user.rpc/pb.usercenter/UserLogin - username:"wl" - rpc error: code = Unknown desc = 密码错误	duration=9.9ms	caller=clientinterceptors/durationinterceptor.go:35	trace=e9c578d5859f645bf279b2947a139c6b	span=86cc8f79b995fd6b
+2023-07-06T16:12:24.677+08:00	[31;1m error [0m	[HTTP] [103;90;1m 500 [0m - [46;97;1m POST [0m /userapi/v1/user/login - 192.168.1.12:48336 - Mozilla/5.0 (Linux; Android 13; 2112123AC Build/TKQ1.220829.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/104.0.5112.97 Mobile Safari/537.36
+POST /userapi/v1/user/login HTTP/1.1
+Host: 192.168.1.9:8881
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Cache-Control: no-cache
+Connection: keep-alive
+Content-Length: 31
+Content-Type: application/json
+Origin: http://192.168.1.9:7771
+Pragma: no-cache
+Referer: http://192.168.1.9:7771/
+User-Agent: Mozilla/5.0 (Linux; Android 13; 2112123AC Build/TKQ1.220829.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/104.0.5112.97 Mobile Safari/537.36
+X-Requested-With: net.fkm.livepushertest
+
+{"username":"wl","password":""}	duration=15.4ms	caller=handler/loghandler.go:162	trace=e9c578d5859f645bf279b2947a139c6b	span=b456d77482639a8b

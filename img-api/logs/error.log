@@ -1,0 +1,3 @@
+2023-07-06T13:45:07.433+08:00	[31;1m error [0m	listen tcp 0.0.0.0:7771: bind: address already in use	caller=rest/server.go:314
+2023-07-06T13:46:42.409+08:00	[31;1m error [0m	listen tcp 0.0.0.0:7771: bind: address already in use	caller=rest/server.go:314
+2023-07-06T13:47:06.004+08:00	[31;1m error [0m	listen tcp 0.0.0.0:7771: bind: address already in use	caller=rest/server.go:314

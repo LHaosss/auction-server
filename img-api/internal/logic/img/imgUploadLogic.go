@@ -46,7 +46,7 @@ func (l *ImgUploadLogic) ImgUpload(r *http.Request) (resp *types.ImgUploadResp, 
 	fmt.Printf("MIME Header: %+v\n", handler.Header)
 	names := strings.Split(handler.Filename, ".")
 	imgName := xid.New().String() + "." + names[len(names)-1]
-	imgUrl := "http://127.0.0.1:7771/img/v1/img/show?img_name=" + imgName
+	imgUrl := "http://127.0.0.1:7772/img/v1/img/show?img_name=" + imgName
 	tempFile, err := os.Create(path.Join(l.svcCtx.Config.Path, imgName))
 	if err != nil {
 		fmt.Println(err)
