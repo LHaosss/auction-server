@@ -24,4 +24,10 @@ go-zero
 - user-api
   - 登陆
   - 注册
--
+- auction-api
+  - 提交拍品
+  - 出价
+- img-api
+  - 图片服务
+- infoManager-rpc
+  - 用户-
